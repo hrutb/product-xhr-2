@@ -16,6 +16,41 @@ body::after{
     left: 0;
 }
 
+
+
+
+
+.backdrop{ 
+     background-color: rgba(0,0,0,0.666);
+     position: fixed;
+     top: 0;
+     left: 0;
+     height: 100%;
+     width: 100%;
+     z-index:1;
+     display: none;
+    }
+    .backdrop.active{ 
+        display: block;
+        animation: fadeOut 1s linear;
+    }
+
+
+.productModel{ 
+      display:none;
+      width: 70%; 
+      top: 20%;
+      left:20%;
+     position:fixed;
+     z-index: 3; 
+    }
+
+.productModel.active{ 
+        display: block;
+        animation: slidedown 1s linear;       
+ } 
+
+
  .productCard{ 
        height: 500px;
        transition: all 0.4s linear;
@@ -46,35 +81,7 @@ body::after{
 }
 
 
-.backdrop{ 
-     background-color: rgba(0,0,0,0.666);
-     position: fixed;
-     top: 0;
-     left: 0;
-     height: 100%;
-     width: 100%;
-     z-index:1;
-     display: none;
-    }
-    .backdrop.active{ 
-        display: block;
-        animation: fadeOut 0.4s linear;
-    }
 
-
-.productModel{ 
-      display:none;
-      width: 70%; 
-      top: 20%;
-      left:20%;
-     position:fixed;
-     z-index: 3; 
-    }
-
-.productModel.active{ 
-        display: block;
-        animation: slidedown 0.4s linear;       
- }
 
 
 

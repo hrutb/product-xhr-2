@@ -81,7 +81,9 @@ function fetchProduct(){
 fetchProduct();
 
 function onSubmit(eve){ 
-          eve.preventDefault();
+
+    eve.preventDefault();
+         
     let newProduct = { 
             title:titleControl.value ,
             price:priceControl.value , 
@@ -118,6 +120,7 @@ function onSubmit(eve){
                                 </div>`
 
             productContainer.prepend(div) ;
+               ontoggleHandler();
          
           }else{ 
               snackbar('product submit failed....!','error')
@@ -168,8 +171,10 @@ function onEdit(ele){
        let editId= ele.closest('.col-md-4').id;
             localStorage.setItem('EditId', editId);
        let EditUrl= `${BaseURL}/products/${editId}`; 
-
-       document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
+            
+       ontoggleHandler();
+      
+     document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
                   btn.disabled =true;
        })
        let xhr= new XMLHttpRequest(); 
@@ -188,7 +193,7 @@ function onEdit(ele){
                 imgControl.value= editObj.image;
                 
                 addProduct.classList.add('d-none');
-                updateProduct.classList.remove('d-none');
+               updateProduct.classList.remove('d-none');
                 
             }else{ 
                   snackbar('failed to edit','error');
@@ -251,7 +256,14 @@ function onUpdate(){
         const backdrop= document.getElementById('backdrop');
 function ontoggleHandler(){ 
               backdrop.classList.toggle('active');
-              productModel.classList.toggle('active');   
+              productModel.classList.toggle('active');  
+              productForm.reset();
+              addProduct.classList.remove('d-none'); 
+              updateProduct.classList.add('d-none'); 
+              document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
+                  btn.disabled =false;
+               })
+
 }
 
 
