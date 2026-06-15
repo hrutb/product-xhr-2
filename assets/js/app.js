@@ -14,6 +14,7 @@ const updateProduct= document.getElementById('updateProduct');
 const addBtn2= document.getElementById('addBtn2');
 const closebackdrop=[...document.querySelectorAll('.closebackdrop')];
 
+const spinner=  document.getElementById('spinner');
 
 const productModel= document.getElementById('productModel')
 
@@ -92,7 +93,7 @@ function onSubmit(eve){
 
     productArr.push(newProduct);
 
-
+   spinner.classList.remove('d-none');
     let xhr= new XMLHttpRequest() ; 
       xhr.open('POST', productUrl); 
 
@@ -120,10 +121,13 @@ function onSubmit(eve){
                                 </div>`
 
             productContainer.prepend(div) ;
-               ontoggleHandler();
+             spinner.classList.add('d-none');
+          
+            ontoggleHandler();
          
           }else{ 
-              snackbar('product submit failed....!','error')
+             spinner.classList.add('d-none');
+             snackbar('product submit failed....!','error')
           }
       } 
  
@@ -176,6 +180,8 @@ function onEdit(ele){
      document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
                   btn.disabled =true;
        })
+   spinner.classList.remove('d-none');
+
        let xhr= new XMLHttpRequest(); 
           xhr.open("GET", EditUrl);
           xhr.setRequestHeader('content-type', 'application/json');  
@@ -191,14 +197,17 @@ function onEdit(ele){
                 priceControl.value= editObj.price;
                 imgControl.value= editObj.image;
                 
-                 ontoggleHandler();
-
-
-
+                
+                
+                
                 addProduct.classList.add('d-none');
-               updateProduct.classList.remove('d-none');
+                updateProduct.classList.remove('d-none');
+                ontoggleHandler();
+                spinner.classList.add('d-none');
                 
             }else{ 
+                 spinner.classList.add('d-none');
+                 
                   snackbar('failed to edit','error');
               }
                
@@ -218,7 +227,8 @@ function onUpdate(){
              
          }
 
-
+           spinner.classList.remove('d-none');
+ 
         let xhr = new XMLHttpRequest() ;
             xhr.open('PATCH', updateUrl);
             xhr.send(JSON.stringify(updateObj))
@@ -248,10 +258,12 @@ function onUpdate(){
             addProduct.classList.remove('d-none');
             updateProduct.classList.add('d-none');
             productForm.reset();
+
             document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
                   btn.disabled =false;
                })
-           
+         spinner.classList.add('d-none');
+            
         } 
 
 
