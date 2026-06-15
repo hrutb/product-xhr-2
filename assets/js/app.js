@@ -202,7 +202,7 @@ function onEdit(ele){
                 
                 addProduct.classList.add('d-none');
                 updateProduct.classList.remove('d-none');
-                ontoggleHandler();
+                ontoggleHandler2();
                 spinner.classList.add('d-none');
                 
             }else{ 
@@ -283,8 +283,8 @@ function ontoggleHandler(){
 function ontoggleHandler2(){ 
               backdrop.classList.toggle('active');
               productModel.classList.toggle('active');  
-              addProduct.classList.remove('d-none'); 
-              updateProduct.classList.add('d-none'); 
+              addProduct.classList.toggle('d-none'); 
+              updateProduct.classList.toggle('d-none'); 
               productForm.reset();
               document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
                   btn.disabled =false;
