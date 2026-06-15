@@ -172,7 +172,6 @@ function onEdit(ele){
             localStorage.setItem('EditId', editId);
        let EditUrl= `${BaseURL}/products/${editId}`; 
             
-       ontoggleHandler();
       
      document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
                   btn.disabled =true;
@@ -192,6 +191,10 @@ function onEdit(ele){
                 priceControl.value= editObj.price;
                 imgControl.value= editObj.image;
                 
+                 ontoggleHandler();
+
+
+
                 addProduct.classList.add('d-none');
                updateProduct.classList.remove('d-none');
                 
@@ -257,7 +260,6 @@ function onUpdate(){
 function ontoggleHandler(){ 
               backdrop.classList.toggle('active');
               productModel.classList.toggle('active');  
-              productForm.reset();
               addProduct.classList.remove('d-none'); 
               updateProduct.classList.add('d-none'); 
               document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
@@ -266,13 +268,23 @@ function ontoggleHandler(){
 
 }
 
-
+function ontoggleHandler2(){ 
+              backdrop.classList.toggle('active');
+              productModel.classList.toggle('active');  
+              addProduct.classList.remove('d-none'); 
+              updateProduct.classList.add('d-none'); 
+              productForm.reset();
+              document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
+                  btn.disabled =false;
+               })
+}
 addBtn2.addEventListener('click', ontoggleHandler);  
 
 
 
 closebackdrop.forEach(btn=>{
-       btn.addEventListener('click', ontoggleHandler)
+       btn.addEventListener('click', ontoggleHandler2); 
+       
   } 
 )
 
