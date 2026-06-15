@@ -189,7 +189,9 @@ function onEdit(ele){
            
           xhr.send(null);
           xhr.onload =function(){ 
-            if(xhr.status>=200 && xhr.status<=299 ){
+              
+              if(xhr.status>=200 && xhr.status<=299 ){
+                ontoggleHandler2();
 
                 let editObj=JSON.parse(xhr.response);
                 
@@ -202,7 +204,6 @@ function onEdit(ele){
                 
                 addProduct.classList.add('d-none');
                 updateProduct.classList.remove('d-none');
-                ontoggleHandler2();
                 spinner.classList.add('d-none');
                 
             }else{ 
@@ -251,18 +252,20 @@ function onUpdate(){
                                     </div>
                                 </div>`
                  
+                    spinner.classList.add('d-none');
+                   ontoggleHandler2();
+                 
+               }else{ 
+
+                   spinner.classList.add('d-none');
                }
                   
             } 
             
-            addProduct.classList.remove('d-none');
-            updateProduct.classList.add('d-none');
-            productForm.reset();
-
+            
             document.querySelectorAll('.btn-outline-danger').forEach(btn=>{ 
-                  btn.disabled =false;
-               })
-         spinner.classList.add('d-none');
+                btn.disabled =false;
+            })
             
         } 
 
