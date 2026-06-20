@@ -205,7 +205,8 @@ function onEdit(ele){
                 addProduct.classList.add('d-none');
                 updateProduct.classList.remove('d-none');
                 spinner.classList.add('d-none');
-                
+               
+                window.scrollTo({top:0,bahevior:'smooth'});
             }else{ 
                  spinner.classList.add('d-none');
                  
