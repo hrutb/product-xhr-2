@@ -156,7 +156,7 @@ function onRemove(ele){
                 
                        xhr.onload = function (){ 
                             if(xhr.status>=200 && xhr.status<=299){ 
-                                   ele.closest('.col-md-6').remove();
+                                   ele.closest('.col-md-4').remove();
                             }else{ 
                                  snackbar('Failed to delete', 'error')
                             }
